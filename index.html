@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Countdown to Asteroids v5</title>
   <style>
-    /* Reset and body styling */
     * {
       margin: 0;
       padding: 0;
@@ -98,11 +97,17 @@
 
   <!-- Countdown Script -->
   <script>
-    const targetDate = new Date("August 25, 2026 00:00:00").getTime();
+    // Set the target to August 6, 2025
+    const targetDate = new Date("August 6, 2025 00:00:00").getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
       const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("timer").innerHTML = "<div>🚀Asteroids v5 Has Launched at https://exploit-master122.github.io/Sketchbook-v5/ 🚀</div>";
+        return;
+      }
 
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -113,10 +118,6 @@
       document.getElementById("hours").innerText = hours.toString().padStart(2, "0");
       document.getElementById("minutes").innerText = minutes.toString().padStart(2, "0");
       document.getElementById("seconds").innerText = seconds.toString().padStart(2, "0");
-
-      if (diff < 0) {
-        document.getElementById("timer").innerHTML = "<div>🚀Asteroids v5 Has Launched!!🚀</div>";
-      }
     }
 
     setInterval(updateCountdown, 1000);
